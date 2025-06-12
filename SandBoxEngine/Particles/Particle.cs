@@ -26,6 +26,6 @@ namespace SandBoxEngine.Particles
             protected set => particleColor = value;
         }
 
-        public abstract void Move(Particle[,] map, int x, int y);
+        public abstract void Move(Map map, int x, int y);
     }
 }

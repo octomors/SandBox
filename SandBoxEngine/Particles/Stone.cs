@@ -10,7 +10,7 @@ namespace SandBoxEngine.Particles
             this.ColorOffset = 10;
         }
 
-        public override void Move(Particle[,] map, int x, int y)
+        public override void Move(Map map, int x, int y)
         {
             return;
         }

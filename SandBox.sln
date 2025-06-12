@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36203.30
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandBox", "SandBox\SandBox.csproj", "{5B13978A-F0EC-4D71-AF5C-17E07D126EC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandBoxEngine", "SandBoxEngine\SandBoxEngine.csproj", "{B39CC1A0-5342-4ABD-95CB-E33D202B36DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B13978A-F0EC-4D71-AF5C-17E07D126EC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B13978A-F0EC-4D71-AF5C-17E07D126EC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B13978A-F0EC-4D71-AF5C-17E07D126EC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B13978A-F0EC-4D71-AF5C-17E07D126EC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B39CC1A0-5342-4ABD-95CB-E33D202B36DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B39CC1A0-5342-4ABD-95CB-E33D202B36DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B39CC1A0-5342-4ABD-95CB-E33D202B36DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B39CC1A0-5342-4ABD-95CB-E33D202B36DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9D47211B-A151-4BE2-A755-EE3BDA4B74FD}
+	EndGlobalSection
+EndGlobal

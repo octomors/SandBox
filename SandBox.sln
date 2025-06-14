@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandBox", "SandBox\SandBox.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandBoxEngine", "SandBoxEngine\SandBoxEngine.csproj", "{B39CC1A0-5342-4ABD-95CB-E33D202B36DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFView", "WPFView\WPFView.csproj", "{9392BF6F-3335-4C35-A718-109126C85B8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B39CC1A0-5342-4ABD-95CB-E33D202B36DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B39CC1A0-5342-4ABD-95CB-E33D202B36DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B39CC1A0-5342-4ABD-95CB-E33D202B36DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9392BF6F-3335-4C35-A718-109126C85B8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9392BF6F-3335-4C35-A718-109126C85B8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9392BF6F-3335-4C35-A718-109126C85B8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9392BF6F-3335-4C35-A718-109126C85B8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

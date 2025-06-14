@@ -11,6 +11,9 @@ namespace SandBoxEngine
         }
         private Particle[,] matrix;
 
+        public int XLength { get => matrix.GetLength(1); }
+        public int YLength { get => matrix.GetLength(0); }
+
 
         public Map(int x, int y)
         {
@@ -28,7 +31,5 @@ namespace SandBoxEngine
         {
             (matrix[y1, x1], matrix[y2, x2]) = (matrix[y2, x2], matrix[y1, x1]);
         }
-
-        public 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using SandBoxEngine;
+using System.Diagnostics;
 
 namespace SilkView
 {
@@ -7,8 +8,12 @@ namespace SilkView
         static void Main(string[] args)
         {
             Renderer renderer = new Renderer();
-            
-            Console.ReadKey();
+            Engine engine  = new Engine(192, 108, renderer, log);
+        }
+
+        private static void log(object sender, LogEventArgs e)
+        {
+            Console.WriteLine(e.Message);
         }
     }
 }

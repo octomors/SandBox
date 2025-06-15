@@ -3,8 +3,10 @@ using System.Drawing;
 
 namespace SandBoxEngine
 {
-    public class SandBoxEngine
+    public class Engine
     {
+        public event EventHandler<LogEventArgs> log;
+
         private IRenderer renderer;
 
         private Map map;
@@ -14,7 +16,7 @@ namespace SandBoxEngine
         /// </summary>
         private int minMsPerFrame;
 
-        public SandBoxEngine(int x, int y, IRenderer renderer, int maxFrameRate = 30)
+        public Engine(int x, int y, IRenderer renderer, EventHandler<LogEventArgs> logger, int maxFrameRate = 30)
         {
             map = new Map(x, y);
             this.renderer = renderer;
@@ -38,6 +40,8 @@ namespace SandBoxEngine
                 CalculateStep();
 
                 renderer.Render(map);
+
+                log.Invoke(this, new LogEventArgs("1 step"));
 
                 sw.Stop();
 

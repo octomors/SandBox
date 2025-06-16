@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Drawing;
 
 namespace SandBoxEngine
@@ -20,6 +21,7 @@ namespace SandBoxEngine
         {
             map = new Map(x, y);
             this.renderer = renderer;
+            log = logger
             minMsPerFrame = 1000 / maxFrameRate;
         }
 
@@ -60,6 +62,8 @@ namespace SandBoxEngine
             {
                 for(int x = 0;  x < map.XLength; x++)
                 {
+                    if (map[y, x] == null)
+                        continue;
                     map[y, x].Move(map, y, x);
                 }
             }

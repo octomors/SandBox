@@ -17,7 +17,7 @@ namespace SandBoxEngine
 
         public Map(int x, int y)
         {
-            matrix = new Particle[x, y];
+            matrix = new Particle[y, x];
         }
 
         /// <summary>

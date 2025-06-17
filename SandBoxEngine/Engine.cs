@@ -1,6 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SandBoxEngine.Particles;
 using System.Diagnostics;
-using System.Drawing;
 
 namespace SandBoxEngine
 {
@@ -21,7 +20,7 @@ namespace SandBoxEngine
         {
             map = new Map(x, y);
             this.renderer = renderer;
-            log = logger
+            log = logger;
             minMsPerFrame = 1000 / maxFrameRate;
         }
 
@@ -32,7 +31,6 @@ namespace SandBoxEngine
 
         private void Loop()
         {
-
             Stopwatch sw = new Stopwatch();
 
             while(true)
@@ -40,10 +38,7 @@ namespace SandBoxEngine
                 sw.Start();
 
                 CalculateStep();
-
                 renderer.Render(map);
-
-                log.Invoke(this, new LogEventArgs("1 step"));
 
                 sw.Stop();
 
@@ -64,7 +59,8 @@ namespace SandBoxEngine
                 {
                     if (map[y, x] == null)
                         continue;
-                    map[y, x].Move(map, y, x);
+
+                    map[y, x].Move(map, x, y);
                 }
             }
         }

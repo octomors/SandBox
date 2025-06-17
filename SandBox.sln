@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandBoxEngine", "SandBoxEng
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilkView", "SilkView\SilkView.csproj", "{341B0FB2-14BC-455F-853B-EC7D31DD128D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleView", "ConsoleView\ConsoleView.csproj", "{B4F1ACBB-B306-49E9-B706-405787D2875D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{341B0FB2-14BC-455F-853B-EC7D31DD128D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{341B0FB2-14BC-455F-853B-EC7D31DD128D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{341B0FB2-14BC-455F-853B-EC7D31DD128D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4F1ACBB-B306-49E9-B706-405787D2875D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4F1ACBB-B306-49E9-B706-405787D2875D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4F1ACBB-B306-49E9-B706-405787D2875D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4F1ACBB-B306-49E9-B706-405787D2875D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

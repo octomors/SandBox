@@ -4,7 +4,7 @@
     {
         public override void Move(Map map, int x, int y)
         {
-            if (y + 1 < 0)
+            if (y + 1 > map.YLength - 1)
                 return;
 
             //check the bottom one

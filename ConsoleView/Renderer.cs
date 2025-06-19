@@ -3,7 +3,7 @@ using SandBoxEngine.Particles;
 
 namespace ConsoleView
 {
-    internal class Renderer : IRenderer
+    internal class Renderer
     {
         private Dictionary<Type, ConsoleColor> colors = new Dictionary<Type, ConsoleColor>()
         {

@@ -1,4 +1,5 @@
 ﻿using SandBoxEngine.Particles;
+using System.ComponentModel;
 using System.Diagnostics;
 
 namespace SandBoxEngine
@@ -7,52 +8,30 @@ namespace SandBoxEngine
     {
         public event EventHandler<LogEventArgs> log;
 
-        private IRenderer renderer;
-
         private Map map;
 
+        Stopwatch sw = new Stopwatch();
         /// <summary>
         /// minimum milliseconds of processing 1 frame
         /// </summary>
         private int minMsPerFrame;
 
-        public Engine(int x, int y, IRenderer renderer, EventHandler<LogEventArgs> logger, int maxFrameRate = 30)
+        public Engine(int x, int y, EventHandler<LogEventArgs> logger, int maxFrameRate = 30)
         {
             map = new Map(x, y);
-            this.renderer = renderer;
             log = logger;
             minMsPerFrame = 1000 / maxFrameRate;
         }
 
-        public void Start()
+        public void addParticle<T>(int x, int y) where T : Particle, new()
         {
-            Loop();
+            map[y, x] = new T();
         }
 
-        private void Loop()
+        public Map CalculateStep()
         {
-            Stopwatch sw = new Stopwatch();
+            sw.Start();
 
-            while(true)
-            {
-                sw.Start();
-
-                CalculateStep();
-                renderer.Render(map);
-
-                sw.Stop();
-
-                if(sw.ElapsedMilliseconds < minMsPerFrame)
-                {
-                    Thread.Sleep(minMsPerFrame -  (int)sw.ElapsedMilliseconds);
-                }
-
-                sw.Reset();
-            }
-        }
-
-        private void CalculateStep()
-        {
             for (int y = map.YLength - 1; y >= 0; y--)
             {
                 for(int x = 0;  x < map.XLength; x++)
@@ -63,6 +42,15 @@ namespace SandBoxEngine
                     map[y, x].Move(map, x, y);
                 }
             }
+
+            sw.Stop();
+            if (sw.ElapsedMilliseconds < minMsPerFrame)
+            {
+                Thread.Sleep(minMsPerFrame - (int)sw.ElapsedMilliseconds);
+            }
+            sw.Reset();
+
+            return map;
         }
     }
 }

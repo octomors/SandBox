@@ -6,8 +6,19 @@ namespace SandBoxEngine
     {
         public Particle this[int y, int x]
         {
-            get { return matrix [y, x]; }
-            set { matrix [y, x] = value; }
+            get
+            {
+                if (y >= 0 && y < matrix.GetLength(0)
+                    && x >= 0 && x < matrix.GetLength(1))
+                    return matrix[y, x];
+                else return null;
+            }
+            set
+            {
+                if (y >= 0 && y < matrix.GetLength(0)
+                    && x >= 0 && x < matrix.GetLength(1))
+                    matrix[y, x] = value;
+            }
         }
         private Particle[,] matrix;
 
@@ -29,7 +40,13 @@ namespace SandBoxEngine
         /// <param name="y2">2 element Y coordinate</param>
         public void Swap(int x1, int y1, int x2, int y2)
         {
-            (matrix[y1, x1], matrix[y2, x2]) = (matrix[y2, x2], matrix[y1, x1]);
+            if (y1 >= 0 && y1 < matrix.GetLength(0)
+                    && x1 >= 0 && x1 < matrix.GetLength(1)
+                    && y2 >= 0 && y2 < matrix.GetLength(0)
+                    && x2 >= 0 && x2 < matrix.GetLength(1))
+            {
+                (matrix[y1, x1], matrix[y2, x2]) = (matrix[y2, x2], matrix[y1, x1]);
+            }
         }
     }
 }

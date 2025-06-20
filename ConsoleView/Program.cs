@@ -19,7 +19,12 @@ namespace ConsoleView
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Maximize this window (F11) and press any key");
+            Console.WriteLine(
+                "Maximize this window (F11) and press any key\n" +
+                "Hints:\n" +
+                "SpaceBar - stop processing\n" +
+                "S - Place Sand\n" +
+                "R - Place Rock\n");
             Console.ReadKey();
             Console.Clear();
 
@@ -36,6 +41,7 @@ namespace ConsoleView
                 if (Console.KeyAvailable)
                 {
                     key = Console.ReadKey(true).Key;
+                    var MousePos = GetMouserPosition();
 
                     switch (key)
                     {
@@ -43,15 +49,14 @@ namespace ConsoleView
                             paused = !paused;
                             break;
                         case ConsoleKey.S:
-                            var pos = GetMouserPosition();
-                            Console.SetCursorPosition(0, 0);
-                            Console.WriteLine(pos.y / AspectY);
-                            engine.addParticle<Sand>((int)(pos.x / AspectX), (int)(pos.y / AspectY));
+                            engine.addParticle<Sand>((int)(MousePos.x / AspectX), (int)(MousePos.y / AspectY));
                             break;
 
-                        case ConsoleKey.D:
-                            var pos1 = GetMouserPosition();
-                            engine.addParticle<Stone>((int)(pos1.x / AspectX), (int)(pos1.y / AspectY));
+                        case ConsoleKey.R:
+                            engine.addParticle<Stone>((int)(MousePos.x / AspectX), (int)(MousePos.y / AspectY));
+                            break;
+                        case ConsoleKey.W:
+                            engine.addParticle<Water>((int)(MousePos.x / AspectX), (int)(MousePos.y / AspectY));
                             break;
 
 

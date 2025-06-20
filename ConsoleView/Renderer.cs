@@ -9,12 +9,14 @@ namespace ConsoleView
         {
             {typeof(Stone), ConsoleColor.DarkGray },
             {typeof(Sand), ConsoleColor.DarkYellow },
+            {typeof(Water), ConsoleColor.Blue },
         };
 
         private Dictionary<Type, char> chars = new Dictionary<Type, char>()
         {
             {typeof(Stone), '#'},
             {typeof(Sand), '%' },
+            {typeof(Water), '@' },
         };
 
         public void Render(Map map)

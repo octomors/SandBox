@@ -4,17 +4,15 @@
     {
         public override void Move(Map map, int x, int y)
         {
-            if (y + 1 > map.YLength - 1)
-                return;
 
             //check the bottom one
-            if (map[y + 1, x] is Solid || map[y + 1, x] is Powder)
+            if (map[y + 1, x] is Solid or Powder)
             {
                 //check the left bottom one
-                if (map[y + 1, x - 1] is Solid || map[y + 1, x - 1] is Powder)
+                if (map[y + 1, x - 1] is Solid or Powder)
                 {
                     //check the right bottom one
-                    if (map[y + 1, x + 1] is Solid || map[y + 1, x + 1] is Powder)
+                    if (map[y + 1, x + 1] is Solid or Powder)
                     {
                         return;
                     }

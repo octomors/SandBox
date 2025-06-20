@@ -6,6 +6,8 @@ namespace SandBoxEngine
 {
     public class Engine
     {
+        static public Random random = new Random();
+
         public event EventHandler<LogEventArgs> log;
 
         private Map map;

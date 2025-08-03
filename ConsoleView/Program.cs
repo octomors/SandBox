@@ -1,5 +1,6 @@
 ﻿using SandBoxEngine;
 using SandBoxEngine.Particles;
+using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
 
@@ -19,6 +20,7 @@ namespace ConsoleView
 
         static void Main(string[] args)
         {
+            Stopwatch sw = new Stopwatch();
             Console.WriteLine(
                 "Maximize this window (F11) and press any key\n" +
                 "Hints:\n" +
@@ -62,6 +64,8 @@ namespace ConsoleView
 
                     }
                 }
+
+                while (Console.KeyAvailable) Console.ReadKey(true);
 
                 if (!paused)
                 {

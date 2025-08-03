@@ -1,4 +1,5 @@
 ﻿using SandBoxEngine.Particles;
+using System.Runtime.CompilerServices;
 
 namespace SandBoxEngine
 {
@@ -47,6 +48,33 @@ namespace SandBoxEngine
             {
                 (matrix[y1, x1], matrix[y2, x2]) = (matrix[y2, x2], matrix[y1, x1]);
             }
+        }
+
+        /// <summary>
+        /// Deletes all particles from the map
+        /// </summary>
+        public void Clear()
+        {
+            int rows = matrix.GetLength(0);
+            int cols = matrix.GetLength(1);
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    matrix[i, j] = null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Deletes 1 particle from the map
+        /// </summary>
+        /// <param name="y"></param>
+        /// <param name="x"></param>
+        public void Delete(int y, int x)
+        {
+            this[y,x] = null;
         }
     }
 }

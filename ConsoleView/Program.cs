@@ -1,8 +1,11 @@
 ﻿using SandBoxEngine;
+using SandBoxEngine.Brushes;
 using SandBoxEngine.Particles;
+using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Windows.Markup;
 
 namespace ConsoleView
 {
@@ -24,9 +27,13 @@ namespace ConsoleView
             Console.WriteLine(
                 "Maximize this window (F11) and press any key\n" +
                 "Hints:\n" +
-                "SpaceBar - stop processing\n" +
+                "SpaceBar - Stop processing\n" +
+                "Delete - Clear the map\n" +
+                "Up and Down Arrows - change brush radius\n" +
+                "V - Place Void\n" +
                 "S - Place Sand\n" +
-                "R - Place Rock\n");
+                "R - Place Rock\n" +
+                "W - Place Water\n");
             Console.ReadKey();
             Console.Clear();
 
@@ -35,6 +42,7 @@ namespace ConsoleView
             Engine engine = new Engine(209, 54, (o, args) => Console.WriteLine(args.Message));
             AspectX = 1920f / 209f;
             AspectY = 1080f / 54f;
+            var brush = new CircularBrush();
 
 
             ConsoleKey key = ConsoleKey.None;
@@ -44,21 +52,33 @@ namespace ConsoleView
                 {
                     key = Console.ReadKey(true).Key;
                     var MousePos = GetMouserPosition();
+                    (int x, int y) selectedPoint = ((int)(MousePos.x / AspectX), (int)(MousePos.y / AspectY));
 
                     switch (key)
                     {
                         case ConsoleKey.Spacebar:
                             paused = !paused;
                             break;
-                        case ConsoleKey.S:
-                            engine.addParticle<Sand>((int)(MousePos.x / AspectX), (int)(MousePos.y / AspectY));
+                        case ConsoleKey.Delete:
+                            engine.ClearMap();
+                            break;
+                        case ConsoleKey.UpArrow:
+                            brush.Radius += 1;
+                            break;
+                        case ConsoleKey.DownArrow:
+                            brush.Radius -= 1;
                             break;
 
+                        case ConsoleKey.V:
+                            break;
+                        case ConsoleKey.S:
+                            engine.addParticle<Sand>(selectedPoint.x, selectedPoint.y,  brush);
+                            break;
                         case ConsoleKey.R:
-                            engine.addParticle<Stone>((int)(MousePos.x / AspectX), (int)(MousePos.y / AspectY));
+                            engine.addParticle<Stone>(selectedPoint.x, selectedPoint.y, brush);
                             break;
                         case ConsoleKey.W:
-                            engine.addParticle<Water>((int)(MousePos.x / AspectX), (int)(MousePos.y / AspectY));
+                            engine.addParticle<Water>(selectedPoint.x, selectedPoint.y, brush);
                             break;
 
 
@@ -81,7 +101,7 @@ namespace ConsoleView
         {
             POINT lpPoint;
             GetCursorPos(out lpPoint);
-            // NOTE: If you need error handling
+            // If error handling is needed
             // bool success = GetCursorPos(out lpPoint);
             // if (!success)
 

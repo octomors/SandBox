@@ -1,4 +1,5 @@
-﻿using SandBoxEngine.Particles;
+﻿using SandBoxEngine.Brushes;
+using SandBoxEngine.Particles;
 using System.ComponentModel;
 using System.Diagnostics;
 
@@ -30,6 +31,14 @@ namespace SandBoxEngine
             map[y, x] = new T();
         }
 
+        public void addParticle<T>(int x, int y, Brush brush) where T : Particle, new()
+        {
+            foreach((int YOffset, int XOffset) in brush.Area)
+            {
+                map[y + YOffset, x + XOffset] = new T();
+            }
+        }
+
         public Map CalculateStep()
         {
             sw.Start();
@@ -53,6 +62,36 @@ namespace SandBoxEngine
             sw.Reset();
 
             return map;
+        }
+
+        /// <summary>
+        /// Deletes all particles from the map
+        /// </summary>
+        public void ClearMap()
+        {
+            map.Clear();
+        }
+
+        /// <summary>
+        /// Deletes 1 particle from the map
+        /// </summary>
+        /// <param name="y"></param>
+        /// <param name="x"></param>
+        public void DeleteParticle(int y, int x)
+        {
+            map.Delete(y, x);
+        }
+        /// <summary>
+        /// Deletes all particles from the map within the brush area
+        /// </summary>
+        /// <param name="y"></param>
+        /// <param name="x"></param>
+        public void DeleteParticle(int y, int x, Brush brush)
+        {
+            foreach((int YOffset, int XOffset) in brush.Area)
+            {
+                map.Delete(y + YOffset, x + XOffset);
+            }
         }
     }
 }

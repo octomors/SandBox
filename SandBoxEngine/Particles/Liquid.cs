@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace SandBoxEngine.Particles
 {
@@ -11,90 +12,45 @@ namespace SandBoxEngine.Particles
 
         public override void Move(Map map, int x, int y)
         {
-            //bottom
-            if (map[y + 1, x] is null)
+            //Check the bottom one
+            if (map[y + 1, x] == null)
             {
                 map.Swap(x, y, x, y + 1);
-                return;
             }
 
-            int leftTarget = x;
-            int leftSteps = 0;
-
-            CheckLeftSideSteps(map, x, y, ref leftTarget, ref leftSteps);
-
-            int rightTarget = x;
-            int rightSteps = 0;
-
-            ChechRightSideSteps(map, x, y, ref rightTarget, ref rightSteps);
-
-            if (leftSteps > 0 || rightSteps > 0)
+            if(Engine.random.Next(0, 2) == 1) // 50%
             {
-                if(leftSteps == rightSteps)
-                {
-                    if(Engine.random.Next(0,2) == 0)
-                    {
-                        map.Swap(x, y, leftTarget, y);
-                    }
-                    else
-                    {
-                        map.Swap(x, y, rightTarget, y);
-                    }
-                }
-                else if (leftSteps > rightSteps)
-                {
-                    map.Swap(x, y, leftTarget, y);
-                }
-                else
-                {
-                    map.Swap(x, y, rightTarget, y);
-                }
+                //Check left side
+                (int newY, int newX) = CheckSide(map, x, y, -1);
+                map.Swap(x, y, newX, newY);
             }
-
-        }
-
-        private void CheckLeftSideSteps(Map map, int x, int y, ref int leftTarget, ref int leftSteps)
-        {
-            // left
-            for (int i = 1; i <= Dispersion; i++)
+            else
             {
-                int newX = x - i;
-
-                if (newX < 0 || map[y, newX] != null)
-                    break;
-
-                if (map[y + 1, newX] != null)
-                {
-                    leftTarget = newX;
-                    leftSteps = i;
-                }
-                else
-                {
-                    break;
-                }
+                //Check rigth side
+                (int newY, int newX) = CheckSide(map, x, y, +1);
+                map.Swap(x, y, newX, newY);
             }
         }
 
-        private void ChechRightSideSteps(Map map, int x, int y, ref int rightTarget, ref int rightSteps)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="direction">+1 to the right, -1 to the left</param>
+        /// <returns>(y, x) next particle position</returns>
+        private (int, int) CheckSide(Map map, int currentX, int currentY, int direction)
         {
-            // right
-            for (int i = 1; i <= Dispersion; i++)
+            for(int i = currentX; i <= currentX + Dispersion * direction; i++)
             {
-                int newX = x + i;
-
-                if (map[y, newX] != null)
-                    break;
-
-                if (map[y + 1, newX] != null)
+                if (map[currentY, i + 1] != null || map[currentY, i + 1] is not Stone || map[currentY, i + 1] is not Powder)
                 {
-                    rightTarget = newX;
-                    rightSteps = i;
+                    return (currentY, i);
                 }
-                else
+                if (map[currentY + 1, i] == null)
                 {
-                    break;
+                    return (currentY + 1, i);
                 }
             }
+            return (currentY, currentX + Dispersion * direction);
         }
     }
 }

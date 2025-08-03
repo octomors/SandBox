@@ -23,17 +23,7 @@ namespace ConsoleView
 
         static void Main(string[] args)
         {
-            Stopwatch sw = new Stopwatch();
-            Console.WriteLine(
-                "Maximize this window (F11) and press any key\n" +
-                "Hints:\n" +
-                "SpaceBar - Stop processing\n" +
-                "Delete - Clear the map\n" +
-                "Up and Down Arrows - change brush radius\n" +
-                "V - Place Void\n" +
-                "S - Place Sand\n" +
-                "R - Place Rock\n" +
-                "W - Place Water\n");
+            PrintTutorial();
             Console.ReadKey();
             Console.Clear();
 
@@ -92,6 +82,26 @@ namespace ConsoleView
                     r.Render(engine.CalculateStep());
                 }
             }
+        }
+
+        static public void PrintTutorial()
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Maximize this window (F11) and press any key\n" +
+                "Hints:\n" +
+                "SpaceBar - Stop processing\n" +
+                "Delete - Clear the map\n" +
+                "Up and Down Arrows - change brush radius\n");
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("V - Place Void\n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("S - Place Sand\n");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("R - Place Rock\n");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("W - Place Water\n");
+
         }
 
         [DllImport("user32.dll")]

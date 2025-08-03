@@ -39,9 +39,9 @@ namespace SandBoxEngine.Particles
         /// <returns>(y, x) next particle position</returns>
         private (int, int) CheckSide(Map map, int currentX, int currentY, int direction)
         {
-            for(int i = currentX; i <= currentX + Dispersion * direction; i++)
+            for(int i = currentX; i <= currentX + Dispersion * direction; i += direction)
             {
-                if (map[currentY, i + 1] != null || map[currentY, i + 1] is not Stone || map[currentY, i + 1] is not Powder)
+                if (map[currentY, i + 1] is Stone or Powder)
                 {
                     return (currentY, i);
                 }

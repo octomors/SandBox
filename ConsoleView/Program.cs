@@ -32,7 +32,7 @@ namespace ConsoleView
             Engine engine = new Engine(209, 54, (o, args) => Console.WriteLine(args.Message));
             AspectX = 1920f / 209f;
             AspectY = 1080f / 54f;
-            var brush = new CircularBrush();
+            var brush = new SquareBrush(3);
 
 
             ConsoleKey key = ConsoleKey.None;
@@ -53,10 +53,10 @@ namespace ConsoleView
                             engine.ClearMap();
                             break;
                         case ConsoleKey.UpArrow:
-                            brush.Radius += 1;
+                            brush.Size -= 1;
                             break;
                         case ConsoleKey.DownArrow:
-                            brush.Radius -= 1;
+                            brush.Size += 1;
                             break;
 
                         case ConsoleKey.V:

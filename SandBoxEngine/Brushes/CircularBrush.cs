@@ -2,27 +2,12 @@
 {
     public class CircularBrush : Brush
     {
-        private int radius;
-
-        public int Radius 
-        {
-            get => radius;
-            set
-            {
-                if(radius != value && value > 0)
-                {
-                    RecalculateArea(value);
-                    radius = value;
-                }
-            }
-        }
-
         public CircularBrush(int radius = 1)
         {
-            Radius = radius;
+            Size = radius;
         }
 
-        private void RecalculateArea(int radius)
+        override protected void RecalculateArea(int radius)
         {
             Area.Clear();
 

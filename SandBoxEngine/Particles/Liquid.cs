@@ -12,12 +12,6 @@ namespace SandBoxEngine.Particles
 
         public override void Move(Map map, int x, int y)
         {
-            //Check the bottom one
-            if (map[y + 1, x] == null)
-            {
-                map.Swap(x, y, x, y + 1);
-            }
-
             if(Engine.random.Next(0, 2) == 1) // 50%
             {
                 //Check left side
@@ -39,18 +33,25 @@ namespace SandBoxEngine.Particles
         /// <returns>(y, x) next particle position</returns>
         private (int, int) CheckSide(Map map, int currentX, int currentY, int direction)
         {
-            for(int i = currentX; i <= currentX + Dispersion * direction; i += direction)
+            for(int x = currentX; x != currentX + (Dispersion + 1) * direction; x += direction)
             {
-                if (map[currentY, i + 1] is Stone or Powder)
+                //if the bottom one is not a barrier
+                if (map[currentY + 1, x] is not Solid and not Powder and not Liquid)
                 {
-                    return (currentY, i);
+                    return (currentY + 1, x);
                 }
-                if (map[currentY + 1, i] == null)
+
+                //if the adjacent one is a barrier
+                if (map[currentY, x + direction] is Solid or Powder or Liquid)
                 {
-                    return (currentY + 1, i);
+                    return (currentY, x);
                 }
+
+                //passed if the bottom cell is a barrier and the adjacent one is not
             }
-            return (currentY, currentX + Dispersion * direction);
+
+            //if all adjacent cells were not barriers, but all the bottom ones were
+            return (currentY, currentX + (Dispersion + 1) * direction);
         }
     }
 }

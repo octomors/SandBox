@@ -20,7 +20,7 @@ namespace SandBoxEngine.Particles
             }
             else
             {
-                //Check rigth side
+                //Check right side
                 (int newY, int newX) = CheckSide(map, x, y, +1);
                 map.Swap(x, y, newX, newY);
             }
@@ -42,7 +42,7 @@ namespace SandBoxEngine.Particles
                 }
 
                 //if the adjacent one is a barrier
-                if (map[currentY, x + direction] is Solid or Powder or Liquid)
+                if (map[currentY, x + direction] is Solid or Powder)
                 {
                     return (currentY, x);
                 }

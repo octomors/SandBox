@@ -4,7 +4,7 @@
     {
         public Water()
         {
-            Dispersion = 3;
+            Dispersion = 12;
         }
     }
 }

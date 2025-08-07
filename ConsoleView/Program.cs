@@ -32,7 +32,7 @@ namespace ConsoleView
             Engine engine = new Engine(209, 54, (o, args) => Console.WriteLine(args.Message));
             AspectX = 1920f / 209f;
             AspectY = 1080f / 54f;
-            var brush = new SquareBrush(3);
+            var selectedBrush = new SquareBrush();
 
 
             ConsoleKey key = ConsoleKey.None;
@@ -53,22 +53,23 @@ namespace ConsoleView
                             engine.ClearMap();
                             break;
                         case ConsoleKey.UpArrow:
-                            brush.Size -= 1;
+                            selectedBrush.Size += 1;
                             break;
                         case ConsoleKey.DownArrow:
-                            brush.Size += 1;
+                            selectedBrush.Size -= 1;
                             break;
 
                         case ConsoleKey.V:
+                            engine.DeleteParticle(selectedPoint.y, selectedPoint.x, selectedBrush);
                             break;
                         case ConsoleKey.S:
-                            engine.addParticle<Sand>(selectedPoint.x, selectedPoint.y,  brush);
+                            engine.addParticle<Sand>(selectedPoint.x, selectedPoint.y,  selectedBrush);
                             break;
                         case ConsoleKey.R:
-                            engine.addParticle<Stone>(selectedPoint.x, selectedPoint.y, brush);
+                            engine.addParticle<Stone>(selectedPoint.x, selectedPoint.y, selectedBrush);
                             break;
                         case ConsoleKey.W:
-                            engine.addParticle<Water>(selectedPoint.x, selectedPoint.y, brush);
+                            engine.addParticle<Water>(selectedPoint.x, selectedPoint.y, selectedBrush);
                             break;
 
 

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.IO.Compression;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SandBoxEngine.Brushes
+﻿namespace SandBoxEngine.Brushes
 {
     public class SquareBrush : Brush
     {
@@ -19,9 +11,9 @@ namespace SandBoxEngine.Brushes
         {
             Area.Clear();
 
-            for(int y = -(Size / 2); y < (Size / 2) + Size % 2; y++)
+            for (int y =  -(size / 2); y < size / 2 + size % 2; y++)
             {
-                for(int x = - (Size / 2); x < (Size / 2) + Size % 2; x++)
+                for (int x = -(size / 2); x < size / 2 + size % 2; x++)
                 {
                     Area.Add((y, x));
                 }

@@ -13,7 +13,7 @@
             get => size;
             set
             {
-                if (value != size && size >= 0)
+                if (value != size && value > 0)
                 {
                     RecalculateArea(value);
                     size = value;

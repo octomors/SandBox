@@ -12,6 +12,8 @@ namespace SandBoxEngine.Particles
 
         public override void Move(Map map, int x, int y)
         {
+            base.Move(map, x, y);
+
             if(Engine.random.Next(0, 2) == 1) // 50%
             {
                 //Check left side

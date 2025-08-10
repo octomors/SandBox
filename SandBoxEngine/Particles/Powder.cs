@@ -4,6 +4,7 @@
     {
         public override void Move(Map map, int x, int y)
         {
+            base.Move(map, x, y);
 
             //check the bottom one
             if (map[y + 1, x] is Solid or Powder)

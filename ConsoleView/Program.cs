@@ -62,14 +62,20 @@ namespace ConsoleView
                         case ConsoleKey.V:
                             engine.DeleteParticle(selectedPoint.y, selectedPoint.x, selectedBrush);
                             break;
-                        case ConsoleKey.S:
-                            engine.addParticle<Sand>(selectedPoint.x, selectedPoint.y,  selectedBrush);
-                            break;
                         case ConsoleKey.R:
                             engine.addParticle<Stone>(selectedPoint.x, selectedPoint.y, selectedBrush);
                             break;
+                        case ConsoleKey.G:
+                            engine.addParticle<Glass>(selectedPoint.x, selectedPoint.y, selectedBrush);
+                            break;
+                        case ConsoleKey.S:
+                            engine.addParticle<Sand>(selectedPoint.x, selectedPoint.y,  selectedBrush);
+                            break;
                         case ConsoleKey.W:
                             engine.addParticle<Water>(selectedPoint.x, selectedPoint.y, selectedBrush);
+                            break;
+                        case ConsoleKey.A:
+                            engine.addParticle<Acid>(selectedPoint.x, selectedPoint.y, selectedBrush);
                             break;
 
 
@@ -96,12 +102,16 @@ namespace ConsoleView
 
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("V - Place Void\n");
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("S - Place Sand\n");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("R - Place Rock\n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("S - Place Sand\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("G - Place Glass\n");
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("W - Place Water\n");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("A - Place Acid\n");
 
         }
 

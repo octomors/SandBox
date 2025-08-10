@@ -8,15 +8,19 @@ namespace ConsoleView
         private Dictionary<Type, ConsoleColor> colors = new Dictionary<Type, ConsoleColor>()
         {
             {typeof(Stone), ConsoleColor.DarkGray },
+            {typeof(Glass), ConsoleColor.White },
             {typeof(Sand), ConsoleColor.DarkYellow },
             {typeof(Water), ConsoleColor.Blue },
+            {typeof(Acid), ConsoleColor.Green },
         };
 
         private Dictionary<Type, char> chars = new Dictionary<Type, char>()
         {
             {typeof(Stone), '#'},
+            {typeof(Glass), 'N'},
             {typeof(Sand), '%' },
             {typeof(Water), '@' },
+            {typeof(Acid), '+' },
         };
 
         public void Render(Map map)

@@ -13,6 +13,8 @@ namespace SandBoxEngine.Particles
         protected int ColorOffset;
 
         private Color particleColor;
+        private int movesBeforeDisappearing = -1;
+
         public Color ParticleColor
         {
             get
@@ -26,6 +28,35 @@ namespace SandBoxEngine.Particles
             protected set => particleColor = value;
         }
 
-        public abstract void Move(Map map, int x, int y);
+        /// <summary>
+        /// Number of moves before the particle self-destructs, can be set only once.
+        /// </summary>
+        public int MovesBeforeDisappearing
+        { 
+            get => movesBeforeDisappearing; 
+            set
+            {
+                if(movesBeforeDisappearing == -1 )
+                {
+                    movesBeforeDisappearing = value;
+                }
+            }
+        }
+        public virtual void Move(Map map, int x, int y)
+        {
+            if (MovesBeforeDisappearing < 0)
+            {
+                return;
+            }
+            else if (MovesBeforeDisappearing == 0)
+            {
+                map[y, x] = null;
+            }
+            else
+            {
+                movesBeforeDisappearing--;
+            }
+
+        }
     }
 }

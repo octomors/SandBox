@@ -11,6 +11,8 @@ namespace SandBoxEngine
 
         public event EventHandler<LogEventArgs> log;
 
+        public bool isPaused { get; set; } = false;
+
         private Map map;
 
         Stopwatch sw = new Stopwatch();
@@ -42,6 +44,11 @@ namespace SandBoxEngine
         public Map CalculateStep()
         {
             sw.Start();
+
+            if(isPaused)
+            {
+                return map;
+            }
 
             for (int y = map.YLength - 1; y >= 0; y--)
             {

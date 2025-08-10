@@ -47,7 +47,7 @@ namespace ConsoleView
                     switch (key)
                     {
                         case ConsoleKey.Spacebar:
-                            paused = !paused;
+                            engine.isPaused = !engine.isPaused;
                             break;
                         case ConsoleKey.Delete:
                             engine.ClearMap();
@@ -82,12 +82,10 @@ namespace ConsoleView
                     }
                 }
 
+                //keyboard buffer cleaning
                 while (Console.KeyAvailable) Console.ReadKey(true);
 
-                if (!paused)
-                {
-                    r.Render(engine.CalculateStep());
-                }
+                r.Render(engine.CalculateStep());
             }
         }
 

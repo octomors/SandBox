@@ -6,12 +6,12 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Markup;
+using System;
 
 namespace ConsoleView
 {
     internal class Program
     {
-        static private bool paused = false;
         /// <summary>
         /// pixels per symbol on X axis
         /// </summary>
@@ -23,13 +23,17 @@ namespace ConsoleView
 
         static void Main(string[] args)
         {
+
             PrintTutorial();
             Console.ReadKey();
             Console.Clear();
 
 
             Renderer r = new Renderer();
-            Engine engine = new Engine(209, 54, (o, args) => Console.WriteLine(args.Message));
+            //PC
+            //Engine engine = new Engine(209, 54, (o, args) => Console.WriteLine(args.Message));
+            //Laptop
+            Engine engine = new Engine(156, 45, (o, args) => Console.WriteLine(args.Message));
             AspectX = 1920f / 209f;
             AspectY = 1080f / 54f;
             var selectedBrush = new SquareBrush();

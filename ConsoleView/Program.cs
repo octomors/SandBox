@@ -59,7 +59,7 @@ namespace ConsoleView
                             selectedBrush.Size -= 1;
                             break;
 
-                        case ConsoleKey.V:
+                        case ConsoleKey.H:
                             engine.DeleteParticle(selectedPoint.y, selectedPoint.x, selectedBrush);
                             break;
                         case ConsoleKey.R:
@@ -77,8 +77,6 @@ namespace ConsoleView
                         case ConsoleKey.A:
                             engine.addParticle<Acid>(selectedPoint.x, selectedPoint.y, selectedBrush);
                             break;
-
-
                     }
                 }
 
@@ -99,7 +97,7 @@ namespace ConsoleView
                 "Up and Down Arrows - change brush radius\n");
 
             Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine("V - Place Void\n");
+            Console.WriteLine("H - Place Hollow (Void)\n");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("R - Place Rock\n");
             Console.ForegroundColor = ConsoleColor.DarkYellow;

@@ -21,6 +21,8 @@ namespace SandBoxEngine
         /// </summary>
         private int minMsPerFrame;
 
+        private ObjectCounter objectCounter = new ObjectCounter();
+
         public Engine(int x, int y, EventHandler<LogEventArgs> logger, int maxFrameRate = 30)
         {
             map = new Map(x, y);
@@ -67,6 +69,8 @@ namespace SandBoxEngine
                 Thread.Sleep(minMsPerFrame - (int)sw.ElapsedMilliseconds);
             }
             sw.Reset();
+
+            map.ObjectNumber = objectCounter.CountObjects(map);
 
             return map;
         }

@@ -25,19 +25,7 @@ namespace ConsoleView
 
         public void Render(Map map)
         {
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.BackgroundColor = ConsoleColor.White;
-
             Console.SetCursorPosition(0, 0);
-            Console.Write(new String(' ', map.XLength));
-
-            Console.SetCursorPosition(0, 0);
-            Console.Write($"Number of objects: {map.ObjectNumber}");
-
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.BackgroundColor = ConsoleColor.Black;
-
-            Console.SetCursorPosition(0, 1);
 
             Type lastParticle = null;
             int stackLength = 0;

@@ -5,8 +5,6 @@ namespace SandBoxEngine
 {
     public class Map
     {
-        public int ObjectNumber { get; set; }
-
         public Particle this[int y, int x]
         {
             get

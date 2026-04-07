@@ -33,10 +33,7 @@ namespace ConsoleView
             //PC
             //Engine engine = new Engine(209, 54, (o, args) => Console.WriteLine(args.Message));
             //Laptop
-            //Engine engine = new Engine(156, 45, (o, args) => Console.WriteLine(args.Message));
-
-            //PC lab
-            Engine engine = new Engine(209, 50, (o, args) => Console.WriteLine(args.Message));
+            Engine engine = new Engine(156, 45, (o, args) => Console.WriteLine(args.Message));
             AspectX = 1920f / 209f;
             AspectY = 1080f / 54f;
             var selectedBrush = new SquareBrush();
